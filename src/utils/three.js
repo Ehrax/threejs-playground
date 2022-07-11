@@ -6,6 +6,7 @@ export const createScene = ({ canvas, width, height }) => {
 		canvas,
 		antialias: true
 	});
+
 	renderer.setSize(width, height);
 
 	return { scene, renderer };

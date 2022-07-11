@@ -1,34 +1,37 @@
 <script>
-  import { onMount } from "svelte";
-  import { createScene, getWindowSize, createCube } from '../utils/three.js'
-  import { PerspectiveCamera } from "three";
+  import { onDestroy, onMount } from "svelte";
+  import { threeJSStore } from '../stores/three.store.js';
+  import Canvas from '../components/canvas.svelte';
+  import { createCube } from "../utils/three.js";
   import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
-  let el;
+  let unsubscribe;
 
   onMount(() => {
-    const {width, height} = getWindowSize();
-    const {scene, renderer} = createScene({canvas: el, width, height});
+    unsubscribe = threeJSStore.subscribe(({renderer, scene, canvas, camera}) => {
+      const cube = createCube();
+      cube.rotation.x = Math.PI * 0.25;
+      cube.rotation.y = Math.PI * 0.25;
+      scene.add(cube);
 
-    const cube = createCube();
-    scene.add(cube);
+      const controls = new OrbitControls(camera, canvas);
+      controls.enableDamping = true
 
-    const camera = new PerspectiveCamera(75, width / height, 0.1, 1000);
-    camera.position.z = 3;
-    camera.lookAt(cube);
-    scene.add(camera);
+      const tick = () => {
+        controls.update();
+        window.requestAnimationFrame(tick);
+        renderer.render(scene, camera);
+      };
 
-    const controls = new OrbitControls(camera, el);
-    controls.enableDamping = true
+      tick();
+    })
+  });
 
-    const tick = () => {
-      controls.update();
-      window.requestAnimationFrame(tick);
-      renderer.render(scene, camera);
-    };
-
-    tick();
+  onDestroy(() => {
+    if (unsubscribe) {
+      unsubscribe();
+    }
   });
 </script>
 
-<canvas bind:this={el}></canvas>
+<Canvas/>

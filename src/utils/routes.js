@@ -18,5 +18,9 @@ export const routes = [
   {
     title: 'Custom Controls',
     link: '/custom-controls'
+  },
+  {
+    title: 'Geometries',
+    link: '/geometries'
   }
 ];
