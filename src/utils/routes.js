@@ -26,5 +26,9 @@ export const routes = [
 	{
 		title: 'Debug UI',
 		link: '/debug-ui'
+	},
+	{
+		title: 'Techno Example',
+		link: '/techno-example'
 	}
 ];

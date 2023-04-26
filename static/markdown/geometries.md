@@ -1,4 +1,5 @@
 # [Geometries](https://threejs-journey.com/lessons/9#what-is-a-geometry) ## What is a geometry? In
+
 Three.js, geometries are composed of vertices (point coordinates in 3D spaces) and faces (triangles
 that join those vertices to create a surface). We use geometries to create meshes, but you can also
 use geometries to form particles. Each vertex (singular of vertices) will correspond to a particle.
