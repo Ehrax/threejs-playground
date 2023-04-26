@@ -4,7 +4,20 @@ module.exports = {
 	extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
 	plugins: ['svelte3', '@typescript-eslint'],
 	ignorePatterns: ['*.cjs'],
-	overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
+	overrides: [
+		{
+			files: ['*.svelte'],
+			processor: 'svelte3/svelte3',
+			rules: {
+				'@typescript-eslint/no-explicit-any': 'off',
+				'@typescript-eslint/explicit-member-accessibility': 'error',
+				'@typescript-eslint/no-explicit-any': 'off',
+				'@typescript-eslint/no-inferrable-types': 'off',
+				'no-case-declarations': 'off',
+				'no-async-promise-executor': 'off'
+			}
+		}
+	],
 	settings: {
 		'svelte3/typescript': () => require('typescript')
 	},

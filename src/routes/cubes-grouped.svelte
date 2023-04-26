@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { createScene } from '../utils/three.js';
 	import { onMount } from 'svelte';
 	import {
@@ -10,7 +10,7 @@
 		PerspectiveCamera
 	} from 'three';
 
-	let canvas;
+	let canvas: HTMLCanvasElement;
 
 	onMount(() => {
 		const width = window.innerWidth;

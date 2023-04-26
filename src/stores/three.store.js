@@ -26,11 +26,11 @@ function createThreeJSStore() {
 				renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 				return {
+					...props,
 					width,
 					height,
 					renderer,
-					camera,
-					...props
+					camera
 				};
 			});
 		}

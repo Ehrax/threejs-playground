@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
 	import { createCube, createScene } from '../utils/three.js';
 	import { onMount } from 'svelte';
 	import { AxesHelper, PerspectiveCamera } from 'three';
 	import HelpButton from '../components/help-button.svelte';
 
-	let canvas;
+	let canvas: HTMLCanvasElement;
 
 	onMount(() => {
 		const width = window.innerWidth;

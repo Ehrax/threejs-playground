@@ -1,27 +1,27 @@
-<script>
-  import { onMount } from "svelte";
-  import { threeJSStore } from '../stores/three.store.js';
-  import { getWindowSize } from "../utils/three.js";
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { threeJSStore } from '../stores/three.store.js';
+	import { getWindowSize } from '../utils/three.js';
 
-  let canvas;
+	let canvas: HTMLCanvasElement;
 
-  onMount(() => {
-    const {width, height} = getWindowSize();
-    threeJSStore.createScene(({canvas, width, height}));
-  });
+	onMount(() => {
+		const { width, height } = getWindowSize();
+		threeJSStore.createScene({ canvas, width, height });
+	});
 
-  function handleResize() {
-    threeJSStore.resize();
-  }
+	function handleResize() {
+		threeJSStore.resize();
+	}
 
-  function handleOpenFullScreen() {
-    if (!document.fullscreenElement) {
-      canvas.requestFullscreen();
-    } else {
-      document.exitFullscreen()
-    }
-  }
+	function handleOpenFullScreen() {
+		if (!document.fullscreenElement) {
+			canvas.requestFullscreen();
+		} else {
+			document.exitFullscreen();
+		}
+	}
 </script>
 
-<svelte:window on:resize={handleResize} on:dblclick={handleOpenFullScreen}/>
-<canvas bind:this={canvas}></canvas>
+<svelte:window on:resize={handleResize} on:dblclick={handleOpenFullScreen} />
+<canvas bind:this={canvas} />

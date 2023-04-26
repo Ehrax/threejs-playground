@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
 	import '../app.css';
 	import Icon from '@iconify/svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	import { modal } from '../stores/info-modal-store.js';
 	import { routes } from '../utils/routes.js';
 
-	let menuCheckbox;
+	let menuCheckbox: HTMLInputElement;
 
 	function toggleMenuDrawer() {
 		menuCheckbox.checked = !menuCheckbox.checked;

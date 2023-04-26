@@ -1,11 +1,14 @@
 # Cube
+
 Creating a basic cube in three.js is quite simple for that we need:
+
 - a canvas `document.querySelector('.canvas')`
 - a scene a scene
 - a camera to show our object
 - a render to render everything
 
 to create those we can use the following code:
+
 ```
 import * as THREE from 'three';
 
@@ -25,6 +28,7 @@ renderer.render(scene, camera);
 ```
 
 # Docs
+
 - [Scene](https://threejs.org/docs/index.html#api/en/scenes/Scene)
 - [BoxGeometry](https://threejs.org/docs/index.html#api/en/geometries/BoxGeometry)
 - [MeshBasicMaterial](https://threejs.org/docs/index.html#api/en/materials/MeshBasicMaterial)
